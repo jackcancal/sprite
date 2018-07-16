@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function getTargetClass(target) {
+        return Object.prototype.toString.call(target).slice(8, -1)
+    }
+    function clone(target) {
+        // 1. 初始化变量，获取目标数据的类型
+        let result;
+        let targetClass = getTargetClass(target);
+        // 2. 判断目标的类型
+        if(targetClass === 'Object'){ // 对象
+            result = {};
+            let names=Reflect.ownKeys(target);//获取对象下所有属性名（包括不可枚举属性和symbol属性），返回一个数组
+            for (let i=0;i<names.length;i++){
+                let pro=Object.getOwnPropertyDescriptor(target,names[i]);//获取对象的自身属性描述符，返回一个对象
+                if (getTargetClass(pro.value)==="Object" || "Array"){
+                    Object.defineProperty(result,names[i],{
+                        value:clone(pro.value),
+                        writable:pro.writable,
+                        enumerable:pro.enumerable,
+                        configurable:pro.configurable
+                    });
+                }else {
+                    Object.defineProperty(result,names[i],pro);
+                }
+            }
+        }else if(targetClass === 'Array'){  // 数组
+            result = [];
+            for (let i=0;i<target.length;i++){
+                if (getTargetClass(target[i])==="Object" || "Array"){
+                    result[i]=clone(target[i])
+                } else {
+                    result[i]=target[i]
+                }
+            }
+        }else {
+            return target;
+        }
+        return result;
+    }
+    let obj={a:[1,2.3,{b:[4,5,6]}]};
+    let arr=[1,2,3,{a:{b:5,d:[6,7,8]}}];
+    console.log(clone(obj),obj);
+    console.log(clone(arr),arr);
+    let obj2={};
+    Object.defineProperties(obj2,{
+        a:{
+            value:1,
+            writable:false,
+            enumerable:false,
+            configurable:false
+        },
+        b:{
+            value:2,
+            writable:false,
+            enumerable:true,
+            configurable:false
+        },
+        c:{
+            value:3,
+            writable:false,
+            enumerable:false,
+            configurable:true
+        }
+    });
+    obj2.d=[1,2,3,{e:4,f:{g:5,h:[6,7,8]}}];
+    obj2[Symbol.iterator]=function () {
+        console.log(12345+' 上山打老虎')
+    };
+    let obj3=clone(obj2);
+    obj3.d[3].e=5;
+
+    console.log(obj3,obj2);
+    obj3[Symbol.iterator]()
+</script>
+
+</body>
+</html>
