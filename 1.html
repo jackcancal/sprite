@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        #big
+        {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 400px;
+            height: 400px;
+            animation:zzz 1s linear infinite
+        }
+        #s1
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(-30deg);
+        }
+        #s2
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(0deg);
+        }
+        #s3
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(30deg);
+        }
+        #s4
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(60deg);
+        }
+        #s5
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(90deg);
+        }
+        #s6
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(120deg);
+        }
+        #s7
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(150deg);
+        }
+        #s8
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(180deg);
+        }
+        #s9
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(210deg);
+        }
+        #s10
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(240deg);
+        }
+        #s11
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(270deg);
+        }
+        #s12
+        {
+            transform-origin: 200px 200px;
+            transform: rotate(300deg);
+        }
+
+        div[id]
+        {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            /*background: deepskyblue;*/
+            border-radius: 0 300px;
+        }
+        div>div>div
+        {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: deepskyblue;
+            border-radius: 0 300px;
+        }
+        div div div
+        {
+            /*animation:zzz 5s linear infinite;*/
+            transform: rotate(45deg);
+        }
+        @keyframes zzz {
+            0%{transform: rotate(0deg)}
+            100%{transform: rotate(-360deg)}
+        }
+    </style>
+</head>
+<body>
+
+<div id="big">
+    <div id="s1"><div></div></div>
+    <div id="s2"><div></div></div>
+    <div id="s3"><div></div></div>
+    <div id="s4"><div></div></div>
+    <div id="s5"><div></div></div>
+    <div id="s6"><div></div></div>
+    <div id="s7"><div></div></div>
+    <div id="s8"><div></div></div>
+    <div id="s9"><div></div></div>
+    <div id="s10"><div></div></div>
+    <div id="s11"><div></div></div>
+    <div id="s12"><div></div></div>
+</div>
+
+</body>
+</html>
