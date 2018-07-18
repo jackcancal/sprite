@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        @keyframes diu {
+            0%{transform: rotateX(0deg)rotateY(0deg)}
+            100%{transform:rotateX(360deg) rotateY(360deg)}
+        }
+        #box
+        {
+            position: fixed;
+            width: 200px;
+            height: 200px;
+            left: 0;
+            right: 0;
+            top:0;
+            bottom: 0;
+            margin: auto;
+            perspective:1000px;
+
+        }
+        img
+        {
+            width: 100%;
+            height: 100%;
+            opacity: 0.5;
+        }
+        #cube
+        {
+            transform:rotateX(-45deg) rotateY(-45deg);
+            transform-style:preserve-3d;
+            position: relative;
+            top: 0;
+            left: 0;
+            animation:diu 5s infinite linear;
+        }
+        #cube>div
+        {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transition: 3s;
+
+        }
+        span
+        {
+            display: block;
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+        #front{
+            transform:translateZ(100px)
+        }
+        #back{
+            transform:translateZ(-100px) rotateY(-180deg)
+        }
+        #left{
+            transform:translateX(-100px) rotateY(-90deg)
+        }
+        #right{
+            transform:translateX(100px) rotateY(90deg)
+        }
+        #top{
+            transform:translateY(-100px) rotateX(90deg)
+        }
+        #bottom{
+            transform:translateY(100px) rotateX(-90deg);
+        }
+        #in_front{
+            transform:translateZ(50px)
+        }
+        #in_back{
+            transform:translateZ(-50px) rotateY(-180deg)
+        }
+        #in_left{
+            transform:translateX(-50px) rotateY(-90deg)
+        }
+        #in_right{
+            transform:translateX(50px) rotateY(90deg)
+        }
+        #in_top{
+            transform:translateY(-50px) rotateX(90deg)
+        }
+        #in_bottom{
+            transform:translateY(50px) rotateX(-90deg);
+        }
+        #box:hover #front{
+            transform:translateZ(200px)
+        }
+        #box:hover #back{
+            transform:translateZ(-200px) rotateY(-180deg)
+        }
+        #box:hover #left{
+            transform:translateX(-200px) rotateY(-90deg)
+        }
+        #box:hover #right{
+            transform:translateX(200px) rotateY(90deg)
+        }
+        #box:hover #top{
+            transform:translateY(-200px) rotateX(90deg)
+        }
+        #box:hover #bottom{
+            transform:translateY(200px) rotateX(-90deg);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="cube">
+            <div id="front"><img src="img/1.png" alt=""></div>
+            <div id="back"><img src="img/2.png" alt=""></div>
+            <div id="left"><img src="img/3.png" alt=""></div>
+            <div id="right"><img src="img/4.png" alt=""></div>
+            <div id="top"><img src="img/5.png" alt=""></div>
+            <div id="bottom"><img src="img/6.png" alt=""></div>
+            <span id="in_front"><img src="img/1.png" alt=""></span>
+            <span id="in_back"><img src="img/2.png" alt=""></span>
+            <span id="in_left"><img src="img/3.png" alt=""></span>
+            <span id="in_right"><img src="img/4.png" alt=""></span>
+            <span id="in_top"><img src="img/5.png" alt=""></span>
+            <span id="in_bottom"><img src="img/6.png" alt=""></span>
+        </div>
+    </div>
+<script>
+
+</script>
+</body>
+</html>
