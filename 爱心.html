@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        @keyframes go1 {
+            0%{}
+            25%{transform: rotateY(180deg)}
+            50%{transform: rotateY(180deg)}
+            75%{transform: rotateY(0deg)}
+            100%{}
+        }
+        @keyframes go2 {
+            0%{}
+            25%{transform: rotateX(180deg)}
+            50%{transform: rotateX(180deg)}
+            75%{transform: rotateX(0deg)}
+            100%{}
+        }
+        #warp
+        {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            transform: rotate(45deg) scale(.7);
+        }
+        #warp>div
+        {
+            width: 50px;
+            height: 50px;
+            background: red;
+            position: absolute;
+        }
+        #warp>div:nth-of-type(1)
+        {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        #warp>div:nth-of-type(2)
+        {
+            top: 25%;
+            left: 0;
+            animation:go1 2s linear infinite;
+            transform-origin: right;
+        }
+        #warp>div:nth-of-type(3)
+        {
+            top: 0;
+            right: 25%;
+            animation:go2 2s linear infinite;
+            transform-origin: bottom;
+            animation-delay: .5s;
+        }
+        #warp>div:not(:first-of-type)
+        {
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+</html>
